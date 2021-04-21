@@ -3,7 +3,12 @@ import os
 import sys
 
 if __name__ == '__main__':
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
+    os.environ.setdefault(
+        'DJANGO_SETTINGS_MODULE', 
+        #'config.settings.{0}'.format(os.environ.setdefault('DJANGO_ENV', 'test'))  # test
+        'config.settings.{0}'.format(os.environ.setdefault('DJANGO_ENV', 'development'))  # development
+        #'config.settings.{0}'.format(os.environ.setdefault('DJANGO_ENV', 'development'))  # production
+    )
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
